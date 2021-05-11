@@ -30,24 +30,27 @@ let styles = {
 }
 
 const App = () => {
-    let showAccount = () => {
-        return (<div>You are logged in</div>)
+    const printAlert = (message) => {
+        alert(message)
     }
     return (
         <>
-            <div
-                style={styles.box}>
-                {/* <h2>Welcome {name + ' ' + lname}</h2>
-                <h3>I'm {age * 2} years old</h3>
-                <h3>{loggedIn ? showAccount() : ''}</h3> */}
-                <h1 style={styles.h1}>Testing</h1>
-            </div>
-            <div
-                className="main-box">
-                <h1 style={styles.h1}>Testing</h1>
-            </div>
+            App
+            <Heading content="Top JavaScript Frameworks" periods={['', '.', '..', '...']}></Heading>
+            <Heading content="My Favorite Books" printAlert={printAlert}></Heading>
+            <Heading content="I love Star Wars"></Heading>
         </>
     )
+}
+
+const Heading = (props) => {
+    console.log(props)
+    return (
+        <h1
+            onClick={() => props.printAlert('Hello World!')}>
+            {props.content} {props.periods == undefined ? '' : props.periods[3]}
+        </h1>
+    );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'))
